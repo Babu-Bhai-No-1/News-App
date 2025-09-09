@@ -31,19 +31,19 @@ Make sure you have the following installed:
 
 ### Installation
 
-#1. Clone the repository
+1: Clone the repository
    ```bash
    git clone https://github.com/Babu-Bhai-No-1/News-App.git
    cd News-App
 
-# 2: Install dependencies
+2: Install dependencies
 npm install
 
-# 3: Set up environment variables
-# Create a .env.local file in the root directory and add:
-REACT_APP_API_KEY=your_api_key_here
+3: Set up environment variables
+   Create a .env.local file in the root directory and add:
+   REACT_APP_API_KEY=your_api_key_here
 
-# 4: Start the development server
+4: Start the development server
 npm start
 
-# 5: Open http://localhost:3000 in your browser
+5: Open http://localhost:3000 in your browser
