@@ -16,24 +16,26 @@ const News = (props) => {
   }
 
   useEffect(() => {
-    document.title = `${Capitalise(props.category)} News-Journal`;
+  const { category, country, apiKey, pageSize, setProgress } = props;
 
-    const updateNews = async () => {
-      props.setProgress(10);
-      const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
-      setLoading(true)
-      let data = await fetch(url);
-      props.setProgress(30);
-      let parsedData = await data.json();
-      props.setProgress(70);
-      setArticles(parsedData.articles || []);
-      setTotalResults(parsedData.totalResults)
-      setLoading(false)
-      props.setProgress(100);
-    }
+  document.title = `${Capitalise(category)} News-Journal`;
 
-    updateNews();
-  }, [props.category, props.country, props.apiKey, props.pageSize, page, props.setProgress]);
+  const updateNews = async () => {
+    setProgress(10);
+    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
+    setLoading(true);
+    let data = await fetch(url);
+    setProgress(30);
+    let parsedData = await data.json();
+    setProgress(70);
+    setArticles(parsedData.articles || []);
+    setTotalResults(parsedData.totalResults);
+    setLoading(false);
+    setProgress(100);
+  };
+
+  updateNews();
+}, [props.category, props.country, props.apiKey, props.pageSize, props.setProgress, page]);
 
   const fetchMoreData = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`;
