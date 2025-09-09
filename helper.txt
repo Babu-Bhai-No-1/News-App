@@ -1,0 +1,7 @@
+Right after you get parsedData in both updateNews and fetchMoreData, add this:
+
+js
+Copy
+Edit
+console.log("API Response:", parsedData);
+This will help you confirm if parsedData.articles is missing, null, or in bad shape — super useful for debugging.
